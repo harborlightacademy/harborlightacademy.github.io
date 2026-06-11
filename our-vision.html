@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Vision — Harbor Light Academy</title>
+  <meta name="description" content="Harbor Light Academy's vision — raising confident, compassionate leaders who stand firm in truth and shine brightly in the world." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    /* Mission layout */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .mission-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mission-logo img {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      filter: drop-shadow(0 8px 32px rgba(26,32,80,0.13));
+    }
+
+    .mission-text .role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .mission-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .mission-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+    }
+
+    @media (max-width: 760px) {
+      .mission-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .mission-logo { order: -1; }
+      .mission-logo img { max-width: 220px; }
+    }
+
+    /* Social icon nav styles */
+    .nav-fb {
+      display: flex !important;
+      align-items: center;
+      padding: 8px 10px !important;
+      color: rgba(255,255,255,0.65) !important;
+      transition: color 0.15s !important;
+    }
+    .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────────── -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <a href="index.html" class="nav-logo" aria-label="Harbor Light Academy home">
+      <img src="images/logo.jpg" alt="Harbor Light Academy" />
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <a href="https://www.facebook.com/profile.php?id=61588515929887" target="_blank" rel="noopener noreferrer" class="nav-fb" aria-label="Harbor Light Academy on Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/harborlightacademy/" target="_blank" rel="noopener noreferrer" class="nav-fb" aria-label="Harbor Light Academy on Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.609.074-3.032.4-4.141 1.509C1.803 2.69 1.477 4.113 1.403 5.722 1.345 7.002 1.331 7.41 1.331 12c0 4.59.014 4.998.072 6.278.074 1.609.4 3.032 1.509 4.141 1.109 1.109 2.532 1.435 4.141 1.509 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.609-.074 3.032-.4 4.141-1.509 1.109-1.109 1.435-2.532 1.509-4.141.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.074-1.609-.4-3.032-1.509-4.141C19.08 1.812 17.657 1.486 16.048 1.412 14.768 1.354 14.36 1.34 12 1.34zm0 5.838a4.822 4.822 0 1 0 0 9.644 4.822 4.822 0 0 0 0-9.644zm0 7.951a3.129 3.129 0 1 1 0-6.258 3.129 3.129 0 0 1 0 6.258zm6.406-8.845a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25z"/></svg>
+        </a>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Our Team <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://harborlightacademy.com/head-of-school">Head of School</a>
+          <a href="https://harborlightacademy.com/associate-head-of-school">Associate Head of School</a>
+          <a href="https://harborlightacademy.com/faculty">Faculty</a>
+        </div>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Academics <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="curriculum.html">Curriculum</a>
+          <a href="dress-code.html">Dress Code</a>
+        </div>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Admissions <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://harborlightacademy.com/application">Application</a>
+          <a href="https://harborlightacademy.com/tuition-1">Tuition</a>
+          <a href="https://harborlightacademy.com/payments">Payments</a>
+        </div>
+      </li>
+      <li><a href="https://harborlightacademy.com/upcoming-events">Events</a></li>
+      <li><a href="https://harborlightacademy.com/giving">Giving</a></li>
+      <li><a href="https://harborlightacademy.com/careers">Careers</a></li>
+      <li><a href="https://harborlightacademy.com/application" class="nav-cta">Apply Now →</a></li>
+    </ul>
+
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE NAV ─────────────────────────────────────────────── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <a href="#">Our Team</a>
+  <a href="https://harborlightacademy.com/head-of-school" class="sub">Head of School</a>
+  <a href="https://harborlightacademy.com/associate-head-of-school" class="sub">Associate Head of School</a>
+  <a href="https://harborlightacademy.com/faculty" class="sub">Faculty</a>
+  <a href="#">Academics</a>
+  <a href="curriculum.html" class="sub">Curriculum</a>
+  <a href="dress-code.html" class="sub">Dress Code</a>
+  <a href="#">Admissions</a>
+  <a href="https://harborlightacademy.com/application" class="sub">Application</a>
+  <a href="https://harborlightacademy.com/tuition-1" class="sub">Tuition</a>
+  <a href="https://harborlightacademy.com/payments" class="sub">Payments</a>
+  <a href="https://harborlightacademy.com/upcoming-events">Events</a>
+  <a href="https://harborlightacademy.com/giving">Giving</a>
+  <a href="https://harborlightacademy.com/careers">Careers</a>
+  <a href="https://harborlightacademy.com/application" class="cta">Apply Now →</a>
+  <a href="https://www.facebook.com/profile.php?id=61588515929887" target="_blank" rel="noopener noreferrer" class="cta" style="margin-top:0;">Facebook →</a>
+  <a href="https://www.instagram.com/harborlightacademy/" target="_blank" rel="noopener noreferrer" class="cta" style="margin-top:0;">Instagram →</a>
+</div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">Harbor Light Academy</p>
+    <h1>Our Vision</h1>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+  <div class="mission-block">
+
+    <div class="mission-logo">
+      <img src="images/logo.jpg" alt="Harbor Light Academy" />
+    </div>
+
+    <div class="mission-text">
+      <p class="role">Our Vision</p>
+      <h2>A Guiding Light</h2>
+      <p>To be a guiding light in our community at Harbor Light Academy, we aim to raise confident, compassionate leaders in a Christian environment who stand firm in truth, pursue excellence, and shine brightly in the world through our focus on whole child education in our private school.</p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  © 2026 Harbor Light Academy &nbsp;·&nbsp; 14353 Benns Church Blvd, Smithfield, VA
+  &nbsp;·&nbsp;
+  <a href="mailto:admissions@harborlightacademy.com">admissions@harborlightacademy.com</a>
+</footer>
+
+<script>
+  function toggleMenu(btn) {
+    const li = btn.parentElement;
+    const isOpen = li.classList.contains('open');
+    document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) li.classList.add('open');
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+  function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+
+</body>
+</html>
