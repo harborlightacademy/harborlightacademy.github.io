@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Curriculum — Harbor Light Academy</title>
+  <meta name="description" content="Harbor Light Academy's curriculum — evidence-based programs nurturing mind, heart, and spirit from Pre-K through 8th grade." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Curriculum-page overrides ─────────────────────────── */
+    body {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    /* Grade-band section */
+    .grade-band {
+      margin-bottom: 72px;
+    }
+    .grade-band:last-child { margin-bottom: 0; }
+
+    .grade-band-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .grade-badge {
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .grade-band-header-line {
+      flex: 1;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.25;
+    }
+    .grade-band-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    /* Curriculum cards grid */
+    .curriculum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .curriculum-card {
+      background: #ffffff;
+      border: 1px solid rgba(26, 32, 80, 0.1);
+      border-top: 3px solid var(--gold);
+      border-radius: 10px;
+      padding: 28px 24px;
+      transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .curriculum-card:hover {
+      box-shadow: 0 8px 32px rgba(26, 32, 80, 0.1);
+      transform: translateY(-3px);
+    }
+
+    .card-subject {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .card-program {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .card-description {
+      font-size: 0.92rem;
+      line-height: 1.72;
+      color: #444;
+    }
+
+    /* Pre-K hero callout */
+    .prek-callout {
+      background: var(--navy);
+      border-radius: 12px;
+      padding: 40px 40px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 72px;
+    }
+    .prek-callout-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .prek-callout-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .prek-callout-body {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* Section divider */
+    .band-divider {
+      border: none;
+      border-top: 1px solid rgba(26,32,80,0.1);
+      margin: 72px 0;
+    }
+
+    @media (max-width: 640px) {
+      .prek-callout {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+        gap: 20px;
+      }
+      .curriculum-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────────────── -->
+<nav aria-label="Main navigation">
+  <div class="nav-inner">
+
+    <a href="index.html" class="nav-logo" aria-label="Harbor Light Academy home">
+      <img src="images/logo.jpg" alt="Harbor Light Academy" />
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li>
+        <a href="https://www.facebook.com/profile.php?id=61588515929887" target="_blank" rel="noopener noreferrer" class="nav-fb" aria-label="Harbor Light Academy on Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.884v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.instagram.com/harborlightacademy/" target="_blank" rel="noopener noreferrer" class="nav-fb" aria-label="Harbor Light Academy on Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.609.074-3.032.4-4.141 1.509C1.803 2.69 1.477 4.113 1.403 5.722 1.345 7.002 1.331 7.41 1.331 12c0 4.59.014 4.998.072 6.278.074 1.609.4 3.032 1.509 4.141 1.109 1.109 2.532 1.435 4.141 1.509 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.609-.074 3.032-.4 4.141-1.509 1.109-1.109 1.435-2.532 1.509-4.141.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.074-1.609-.4-3.032-1.509-4.141C19.08 1.812 17.657 1.486 16.048 1.412 14.768 1.354 14.36 1.34 12 1.34zm0 5.838a4.822 4.822 0 1 0 0 9.644 4.822 4.822 0 0 0 0-9.644zm0 7.951a3.129 3.129 0 1 1 0-6.258 3.129 3.129 0 0 1 0 6.258zm6.406-8.845a1.125 1.125 0 1 0 0 2.25 1.125 1.125 0 0 0 0-2.25z"/></svg>
+        </a>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Our Team <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://harborlightacademy.com/head-of-school">Head of School</a>
+          <a href="https://harborlightacademy.com/associate-head-of-school">Associate Head of School</a>
+          <a href="https://harborlightacademy.com/faculty">Faculty</a>
+        </div>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Academics <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="curriculum.html" class="active">Curriculum</a>
+          <a href="https://harborlightacademy.com/dress-code">Dress Code</a>
+        </div>
+      </li>
+      <li>
+        <button onclick="toggleMenu(this)" aria-haspopup="true">
+          Admissions <span class="chevron">▾</span>
+        </button>
+        <div class="dropdown">
+          <a href="https://harborlightacademy.com/application">Application</a>
+          <a href="https://harborlightacademy.com/tuition-1">Tuition</a>
+          <a href="https://harborlightacademy.com/payments">Payments</a>
+        </div>
+      </li>
+      <li><a href="https://harborlightacademy.com/upcoming-events">Events</a></li>
+      <li><a href="https://harborlightacademy.com/giving">Giving</a></li>
+      <li><a href="https://harborlightacademy.com/careers">Careers</a></li>
+      <li><a href="https://harborlightacademy.com/application" class="nav-cta">Apply Now →</a></li>
+    </ul>
+
+    <button class="hamburger" onclick="openMobileNav()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── MOBILE NAV ─────────────────────────────────────────────── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  <a href="#">Our Team</a>
+  <a href="https://harborlightacademy.com/head-of-school" class="sub">Head of School</a>
+  <a href="https://harborlightacademy.com/associate-head-of-school" class="sub">Associate Head of School</a>
+  <a href="https://harborlightacademy.com/faculty" class="sub">Faculty</a>
+  <a href="#">Academics</a>
+  <a href="curriculum.html" class="sub">Curriculum</a>
+  <a href="https://harborlightacademy.com/dress-code" class="sub">Dress Code</a>
+  <a href="#">Admissions</a>
+  <a href="https://harborlightacademy.com/application" class="sub">Application</a>
+  <a href="https://harborlightacademy.com/tuition-1" class="sub">Tuition</a>
+  <a href="https://harborlightacademy.com/payments" class="sub">Payments</a>
+  <a href="https://harborlightacademy.com/upcoming-events">Events</a>
+  <a href="https://harborlightacademy.com/giving">Giving</a>
+  <a href="https://harborlightacademy.com/careers">Careers</a>
+  <a href="https://harborlightacademy.com/application" class="cta">Apply Now →</a>
+  <a href="https://www.facebook.com/profile.php?id=61588515929887" target="_blank" rel="noopener noreferrer" class="cta" style="margin-top:0;">Facebook →</a>
+  <a href="https://www.instagram.com/harborlightacademy/" target="_blank" rel="noopener noreferrer" class="cta" style="margin-top:0;">Instagram →</a>
+</div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">Academics</p>
+    <h1>Our Curriculum</h1>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+
+  <p class="section-label">Programs &amp; Approach</p>
+
+  <!-- PRE-K ───────────────────────────────────────────────────── -->
+  <div class="prek-callout">
+    <div>
+      <p class="prek-callout-label">Pre-Kindergarten</p>
+      <h2 class="prek-callout-title">Heggerty Phonemic Awareness</h2>
+    </div>
+    <p class="prek-callout-body">
+      The Heggerty Phonemic Awareness Pre-K lessons are designed to supplement any existing literacy curriculum and integrate easily into half-day or full-day preschool programs. When lessons are taught daily with explicit teacher modeling and scaffolded support, students improve in reading, spelling, and writing as they learn to hear the sounds in words.
+    </p>
+  </div>
+
+  <!-- K–2 ─────────────────────────────────────────────────────── -->
+  <div class="grade-band">
+    <div class="grade-band-header">
+      <span class="grade-badge">K – 2nd Grade</span>
+      <div class="grade-band-header-line"></div>
+    </div>
+
+    <div class="curriculum-grid">
+
+      <div class="curriculum-card">
+        <p class="card-subject">English Language Arts</p>
+        <h3 class="card-program">Superkids</h3>
+        <p class="card-description">A comprehensive ELA curriculum for grades K–2 built on evidence-based literacy practices. Superkids follows a systematic and explicit instructional path through engaging, increasingly complex text.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Mathematics</p>
+        <h3 class="card-program">Math in Focus</h3>
+        <p class="card-description">Grounded in the Singapore approach to math, this program uses consistent visual models so students tackle concepts normally reserved for later grades, with a strong emphasis on real-world application.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Science</p>
+        <h3 class="card-program">Five Ponds Press Science</h3>
+        <p class="card-description">Students explore the relationships between science, technology, engineering, and math (STEM), applying inquiry skills and building a deep understanding of the nature of science.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Social Studies</p>
+        <h3 class="card-program">Five Ponds Press Social Studies</h3>
+        <p class="card-description">Focused on each standard of learning for history, geography, economics, and civics, this program builds deep understanding across all four disciplines.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="band-divider" />
+
+  <!-- 3–8 ─────────────────────────────────────────────────────── -->
+  <div class="grade-band">
+    <div class="grade-band-header">
+      <span class="grade-badge">3rd – 8th Grade</span>
+      <div class="grade-band-header-line"></div>
+    </div>
+
+    <div class="curriculum-grid">
+
+      <div class="curriculum-card">
+        <p class="card-subject">Grammar</p>
+        <h3 class="card-program">Voyages in English</h3>
+        <p class="card-description">Prepares students to become literate masters — better writers, readers, listeners, and speakers — through a rigorous, structured approach to grammar and composition.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Word Study</p>
+        <h3 class="card-program">Wordly Wise</h3>
+        <p class="card-description">Vocabulary instruction designed to develop the critical link between word knowledge and reading comprehension, building academic language across content areas.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Mathematics</p>
+        <h3 class="card-program">Math in Focus</h3>
+        <p class="card-description">Continuing the Singapore math approach, students build on prior models to tackle increasingly complex concepts with a sustained emphasis on reasoning and application.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Novel Studies</p>
+        <h3 class="card-program">Read Side-by-Side</h3>
+        <p class="card-description">A highly motivating program tailored for middle-grade students. Trade books teach students to use text structure as a strategy for deeper comprehension and genuine enjoyment of reading.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Science</p>
+        <h3 class="card-program">Five Ponds Press Science</h3>
+        <p class="card-description">Students continue exploring STEM relationships, applying inquiry skills and incorporating nature of science understandings across increasingly complex topics.</p>
+      </div>
+
+      <div class="curriculum-card">
+        <p class="card-subject">Social Studies</p>
+        <h3 class="card-program">Five Ponds Press Social Studies</h3>
+        <p class="card-description">Students focus on each standard of learning for history, geography, economics, and civics, developing a deep understanding across all four disciplines.</p>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer>
+  © 2026 Harbor Light Academy &nbsp;·&nbsp; 14353 Benns Church Blvd, Smithfield, VA
+  &nbsp;·&nbsp;
+  <a href="mailto:admissions@harborlightacademy.com">admissions@harborlightacademy.com</a>
+</footer>
+
+<script>
+  function toggleMenu(btn) {
+    const li = btn.parentElement;
+    const isOpen = li.classList.contains('open');
+    document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) li.classList.add('open');
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+  function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+
+</body>
+</html>
