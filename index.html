@@ -6,160 +6,21 @@
   <title>Harbor Light Academy</title>
   <meta name="description" content="Harbor Light Academy — a Christian school in Smithfield, VA nurturing the mind, heart, and spirit." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── Homepage-specific overrides ────────────────────────────
+       These styles apply only to the full-viewport hero on the
+       home page and are not part of the shared style.css.
+    ─────────────────────────────────────────────────────────── */
 
-    :root {
-      --navy:      #1a2050;
-      --navy-dark: #101435;
-      --navy-mid:  #222a6a;
-      --gold:      #c9a84c;
-      --gold-light:#dfc06a;
-      --white:     #ffffff;
-    }
-
+    /* Home page needs a dark background behind the hero */
     html, body { height: 100%; }
     body {
-      font-family: 'Source Sans 3', sans-serif;
       background: var(--navy-dark);
       color: var(--white);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    /* ══════════════════════════════════════════
-       NAV
-    ══════════════════════════════════════════ */
-    nav {
-      background: var(--navy);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.4);
-      border-bottom: 1px solid rgba(201,168,76,0.2);
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      height: 64px;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    /* Logo in nav */
-    .nav-logo {
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-logo img {
-      height: 46px;
-      width: auto;
-      display: block;
-    }
-
-    /* Nav links */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 2px;
-    }
-
-    .nav-links > li { position: relative; }
-
-    .nav-links > li > a,
-    .nav-links > li > button {
-      color: rgba(255,255,255,0.82);
-      text-decoration: none;
-      font-size: 0.82rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 8px 12px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-      transition: background 0.15s, color 0.15s;
-      white-space: nowrap;
-    }
-    .nav-links > li > a:hover,
-    .nav-links > li > button:hover,
-    .nav-links > li.open > button {
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
-    }
-
-    .chevron { font-size: 0.55rem; transition: transform 0.2s; }
-    .nav-links li.open .chevron { transform: rotate(180deg); }
-
-    /* Dropdown */
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 0;
-      background: var(--white);
-      min-width: 200px;
-      border-radius: 8px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.22);
-      overflow: hidden;
-      z-index: 200;
-      border-top: 3px solid var(--gold);
-    }
-    .dropdown.right { left: auto; right: 0; }
-    li.open > .dropdown { display: block; }
-
-    .dropdown a {
-      display: block;
-      padding: 11px 18px;
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 0.86rem;
-      font-weight: 400;
-      border-bottom: 1px solid #eee;
-      transition: background 0.1s, padding-left 0.12s;
-    }
-    .dropdown a:last-child { border-bottom: none; }
-    .dropdown a:hover { background: #f6f4ef; padding-left: 24px; }
-
-    /* CTA button */
-    .nav-cta {
-      background: var(--gold) !important;
-      color: var(--navy-dark) !important;
-      font-weight: 700 !important;
-      border-radius: 6px !important;
-      margin-left: 8px;
-    }
-    .nav-cta:hover { background: var(--gold-light) !important; }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-    }
-    .hamburger span {
-      display: block; width: 24px; height: 2px;
-      background: var(--white); border-radius: 2px;
-    }
-
-    /* ══════════════════════════════════════════
-       HERO — full viewport, photo background
-    ══════════════════════════════════════════ */
+    /* Full-viewport hero section */
     .hero {
       position: relative;
       flex: 1;
@@ -170,7 +31,6 @@
       justify-content: center;
       overflow: hidden;
     }
-
     .hero-bg {
       position: absolute;
       inset: 0;
@@ -178,8 +38,6 @@
       background-size: cover;
       background-position: center 35%;
     }
-
-    /* Two-layer overlay: subtle at top, heavier at bottom */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -191,7 +49,6 @@
         rgba(16, 20, 53, 0.88) 100%
       );
     }
-
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -201,14 +58,12 @@
       text-align: center;
       padding: 48px 24px 64px;
     }
-
     .hero-logo {
       width: clamp(190px, 28vw, 280px);
       height: auto;
       filter: drop-shadow(0 6px 28px rgba(0,0,0,0.6));
       margin-bottom: 28px;
     }
-
     .hero-tagline {
       font-family: 'Playfair Display', serif;
       font-style: italic;
@@ -218,7 +73,7 @@
       margin-bottom: 52px;
     }
 
-    /* Three buttons */
+    /* Hero CTA buttons */
     .hero-links {
       display: flex;
       flex-direction: column;
@@ -226,7 +81,6 @@
       width: 100%;
       max-width: 340px;
     }
-
     .hero-link {
       display: flex;
       align-items: center;
@@ -244,13 +98,11 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(0,0,0,0.35);
     }
-
     .hero-link.gold {
       background: var(--gold);
       color: var(--navy-dark);
     }
     .hero-link.gold:hover { background: var(--gold-light); }
-
     .hero-link.glass {
       background: rgba(255,255,255,0.09);
       color: var(--white);
@@ -261,61 +113,9 @@
       background: rgba(255,255,255,0.15);
       border-color: var(--gold);
     }
-
     .hero-link .arrow { opacity: 0.75; }
 
-    /* ══════════════════════════════════════════
-       FOOTER
-    ══════════════════════════════════════════ */
-    footer {
-      background: var(--navy-dark);
-      border-top: 1px solid rgba(201,168,76,0.18);
-      padding: 18px 24px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.38);
-    }
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
-      margin: 0 6px;
-    }
-    footer a:hover { color: var(--gold-light); text-decoration: underline; }
-
-    /* Mobile nav overlay */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--navy-dark);
-      z-index: 999;
-      overflow-y: auto;
-      padding: 80px 32px 40px;
-    }
-    .mobile-nav.open { display: block; }
-    .mobile-nav-close {
-      position: absolute; top: 16px; right: 20px;
-      background: none; border: none;
-      color: var(--white); font-size: 1.6rem; cursor: pointer;
-    }
-    .mobile-nav a {
-      display: block; color: var(--white); text-decoration: none;
-      font-size: 1.1rem; font-weight: 600; padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .mobile-nav a.sub {
-      font-size: 0.9rem; font-weight: 400; color: rgba(255,255,255,0.6);
-      padding-left: 18px; text-transform: none; letter-spacing: 0;
-    }
-    .mobile-nav a.cta {
-      color: var(--gold); font-weight: 700; margin-top: 16px;
-      border-bottom: none;
-    }
-
-    /* ══════════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════════ */
+    /* Responsive hero buttons */
     @media (min-width: 600px) {
       .hero-links {
         flex-direction: row;
@@ -329,13 +129,8 @@
       }
     }
 
-    @media (max-width: 860px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .hero-link, .nav-links > li > a, .nav-links > li > button { transition: none; }
+      .hero-link { transition: none; }
     }
   </style>
 </head>
