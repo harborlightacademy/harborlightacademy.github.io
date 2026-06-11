@@ -10,6 +10,31 @@
   <style>
     body { background: #ffffff; color: #111111; }
 
+    /* Override bio-card to stack image on top on mobile, side-by-side on desktop */
+    .bio-card {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+
+    .announcement-img-wrap {
+      width: 100%;
+    }
+    .announcement-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .bio-card {
+        grid-template-columns: 1fr;
+      }
+      .announcement-img {
+        border-radius: 8px;
+      }
+    }
+
     /* Social icon nav */
     .nav-fb {
       display: flex !important;
@@ -112,12 +137,8 @@
 
   <div class="bio-card">
 
-    <div>
-      <div class="bio-photo">
-        <img src="images/announcement.WEBP"
-          alt="Kevin Goetz, Head of School"
-        />
-      </div>
+    <div class="announcement-img-wrap">
+      <img src="images/announcement.WEBP" alt="Kevin Goetz announced as Head of School" class="announcement-img" />
     </div>
 
     <div class="bio-info">
