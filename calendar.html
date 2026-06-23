@@ -18,7 +18,17 @@
 
     body { background: #ffffff; color: #111111; }
 
-    /* ── Intro copy + actions (sits in <main>, below the shared page-hero) ── */
+    /* ── Intro box (sits between the page-hero and quick month nav) ── */
+    .cal-intro-box {
+      max-width: 1080px;
+      margin: 36px auto;
+      padding: 32px 36px;
+      background: #ffffff;
+      border: 1px solid rgba(26,32,80,0.1);
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(16,20,53,0.05);
+    }
+    .cal-intro-box .section-label { margin-bottom: 10px; }
     .cal-intro {
       font-family: 'Source Sans 3', sans-serif;
       font-weight: 300;
@@ -26,13 +36,12 @@
       color: var(--slate);
       max-width: 640px;
       line-height: 1.65;
-      margin: 0 0 28px;
+      margin: 0 0 24px;
     }
     .cal-header-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 44px;
     }
     .cal-btn {
       display: inline-flex;
@@ -62,11 +71,11 @@
       position: sticky;
       top: 0;
       z-index: 5;
-      background: #ffffff;
-      border-bottom: 1px solid rgba(16,20,53,0.08);
+      background: var(--slate);
     }
     .cal-quicknav {
       display: flex;
+      justify-content: center;
       gap: 8px;
       overflow-x: auto;
       padding: 14px 24px;
@@ -78,8 +87,8 @@
       flex: 0 0 auto;
       padding: 7px 16px;
       border-radius: 999px;
-      background: rgba(16,20,53,0.05);
-      color: var(--navy-dark);
+      background: rgba(255,255,255,0.14);
+      color: var(--white);
       text-decoration: none;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.82rem;
@@ -263,6 +272,16 @@
   </div>
 </div>
 
+<!-- ── INTRO BOX ──────────────────────────────────────────────── -->
+<div class="cal-intro-box">
+  <p class="section-label">2026 – 2027 Academic Year</p>
+  <p class="cal-intro">Key dates, holidays, and closings for the Harbor Light Academy school year — from Back to School in August through the start of Summer Camps next June.</p>
+  <div class="cal-header-actions">
+    <a href="HLA-2026-27-School-Calendar.pdf" class="cal-btn gold" download>Download PDF ↓</a>
+    <a href="#august" class="cal-btn outline">Jump to Calendar ↓</a>
+  </div>
+</div>
+
 <!-- ── QUICK MONTH NAV ────────────────────────────────────────── -->
 <div class="cal-quicknav-wrap">
   <nav class="cal-quicknav" aria-label="Jump to month">
@@ -283,12 +302,6 @@
 <!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
 <main>
 
-  <p class="section-label">2026 – 2027 Academic Year</p>
-  <p class="cal-intro">Key dates, holidays, and closings for the Harbor Light Academy school year — from Back to School in August through the start of Summer Camps next June.</p>
-  <div class="cal-header-actions">
-    <a href="HLA-2026-27-School-Calendar.pdf" class="cal-btn gold" download>Download PDF ↓</a>
-    <a href="#august" class="cal-btn outline">Jump to Calendar ↓</a>
-  </div>
 
 <!-- ── NEXT UP ────────────────────────────────────────────────── -->
 <section class="next-up-section">
