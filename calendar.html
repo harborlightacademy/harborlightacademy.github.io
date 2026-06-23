@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Calendar | Harbor Light Academy</title>
+  <meta name="description" content="The 2026–27 school calendar for Harbor Light Academy — key dates, holidays, and school closings for the academic year." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Calendar page-specific styles ───────────────────────────
+       Scoped to this page only, in the same pattern as the
+       homepage hero overrides in index.html. Uses the site's
+       CSS variables (with sensible fallbacks) so colors stay
+       in sync with style.css if/when those variables exist there.
+    ─────────────────────────────────────────────────────────── */
+
+    body {
+      background: var(--page-bg, #FAF8F3);
+      color: var(--text-dark, #20243A);
+    }
+
+    /* ── Page header banner ── */
+    .cal-header {
+      background: var(--navy-dark, #101435);
+      color: var(--white, #FFFFFF);
+      padding: 64px 24px 48px;
+      text-align: center;
+    }
+    .cal-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold, #C9A84C);
+      margin-bottom: 14px;
+    }
+    .cal-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      margin: 0 0 12px;
+    }
+    .cal-subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 560px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+    .cal-header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+    .cal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .cal-btn.gold { background: var(--gold, #C9A84C); color: var(--navy-dark, #101435); }
+    .cal-btn.gold:hover { background: var(--gold-light, #E3C474); transform: translateY(-2px); }
+    .cal-btn.glass {
+      background: rgba(255,255,255,0.09);
+      color: var(--white, #FFFFFF);
+      border: 1.5px solid rgba(201,168,76,0.45);
+    }
+    .cal-btn.glass:hover { background: rgba(255,255,255,0.16); border-color: var(--gold, #C9A84C); transform: translateY(-2px); }
+
+    /* ── Quick month nav ── */
+    .cal-quicknav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      background: var(--page-bg, #FAF8F3);
+      border-bottom: 1px solid rgba(16,20,53,0.08);
+    }
+    .cal-quicknav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 14px 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+      scrollbar-width: thin;
+    }
+    .cal-quicknav a {
+      flex: 0 0 auto;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: rgba(16,20,53,0.05);
+      color: var(--navy-dark, #101435);
+      text-decoration: none;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .cal-quicknav a:hover { background: var(--gold, #C9A84C); color: var(--navy-dark, #101435); }
+
+    /* ── "Next up" beacon card ── */
+    .next-up-section { padding: 36px 24px 0; }
+    .next-up {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: var(--navy-dark, #101435);
+      color: var(--white, #FFFFFF);
+      border-radius: 14px;
+      padding: 22px 28px;
+      box-shadow: 0 10px 30px rgba(16,20,53,0.18);
+    }
+    .next-up-beam {
+      flex: 0 0 auto;
+      width: 44px;
+      height: 44px;
+      color: var(--gold, #C9A84C);
+    }
+    .next-up-copy { flex: 1; min-width: 0; }
+    .next-up-tag {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold, #C9A84C);
+      margin-bottom: 4px;
+    }
+    .next-up-label {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+    .next-up-meta {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 3px;
+    }
+    .next-up-countdown {
+      flex: 0 0 auto;
+      text-align: right;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+    .next-up-countdown .num {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      color: var(--gold-light, #E3C474);
+      display: block;
+      line-height: 1;
+    }
+    .next-up-countdown .unit {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Legend ── */
+    .legend-section { padding: 28px 24px 0; }
+    .legend {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.86rem;
+      color: var(--text-muted, #5B6079);
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-swatch { width: 14px; height: 14px; border-radius: 4px; flex: 0 0 auto; }
+    .legend-swatch.closed { background: var(--tan, #F6E9CB); border: 1.5px solid var(--tan-border, #D9B66B); }
+    .legend-swatch.key { background: var(--blue, #DCE7F5); border: 1.5px solid var(--blue-border, #6F95C2); }
+    .legend-swatch.event { background: #FFFFFF; border: 1.5px solid #DDD7C8; }
+
+    /* ── Month grid ── */
+    .cal-grid-section { padding: 28px 24px 80px; }
+    .cal-grid {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 26px;
+    }
+    .month-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(16,20,53,0.08);
+      border-radius: 14px;
+      padding: 22px 22px 10px;
+      box-shadow: 0 4px 18px rgba(16,20,53,0.05);
+    }
+    .month-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold, #C9A84C);
+    }
+    .month-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      margin: 0;
+      color: var(--navy-dark, #101435);
+    }
+    .month-heading span {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted, #5B6079);
+    }
+    .cal-row {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 11px 12px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      border-left: 4px solid #DDD7C8;
+      background: #FFFFFF;
+    }
+    .cal-row.cat-closed { border-left-color: var(--tan-border, #D9B66B); background: var(--tan, #F6E9CB); }
+    .cal-row.cat-key    { border-left-color: var(--blue-border, #6F95C2); background: var(--blue, #DCE7F5); }
+    .cal-row.cat-event  { border-left-color: var(--gold, #C9A84C); background: #FFFFFF; }
+    .cal-row.is-next {
+      box-shadow: 0 0 0 2px var(--gold, #C9A84C) inset;
+    }
+    .cal-date {
+      flex: 0 0 auto;
+      min-width: 122px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 0.86rem;
+      color: var(--navy-dark, #101435);
+    }
+    .cal-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark, #20243A);
+      line-height: 1.4;
+    }
+
+    @media (max-width: 480px) {
+      .cal-row { flex-direction: column; gap: 3px; }
+      .cal-date { min-width: 0; }
+      .next-up { flex-wrap: wrap; }
+      .next-up-countdown { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cal-btn, .cal-quicknav a { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav-placeholder"></div>
+
+<!-- ── PAGE HEADER ────────────────────────────────────────────── -->
+<header class="cal-header">
+  <p class="cal-eyebrow">2026 – 2027 Academic Year</p>
+  <h1 class="cal-title">School Calendar</h1>
+  <p class="cal-subtitle">Key dates, holidays, and closings for the Harbor Light Academy school year — from Back to School in August through the start of Summer Camps next June.</p>
+  <div class="cal-header-actions">
+    <a href="HLA-2026-27-School-Calendar.pdf" class="cal-btn gold" download>Download PDF ↓</a>
+    <a href="#august" class="cal-btn glass">Jump to Calendar ↓</a>
+  </div>
+</header>
+
+<!-- ── QUICK MONTH NAV ────────────────────────────────────────── -->
+<div class="cal-quicknav-wrap">
+  <nav class="cal-quicknav" aria-label="Jump to month">
+    <a href="#august">Aug</a>
+    <a href="#september">Sep</a>
+    <a href="#october">Oct</a>
+    <a href="#november">Nov</a>
+    <a href="#december">Dec</a>
+    <a href="#january">Jan</a>
+    <a href="#february">Feb</a>
+    <a href="#march">Mar</a>
+    <a href="#april">Apr</a>
+    <a href="#may">May</a>
+    <a href="#june">Jun</a>
+  </nav>
+</div>
+
+<!-- ── NEXT UP ────────────────────────────────────────────────── -->
+<section class="next-up-section">
+  <div class="next-up" id="nextUpCard">
+    <svg class="next-up-beam" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M20 6h8l2 8h-12l2-8z" fill="currentColor"/>
+      <path d="M18 16h12l3 22H15l3-22z" fill="currentColor" fill-opacity="0.85"/>
+      <rect x="14" y="40" width="20" height="4" rx="1" fill="currentColor"/>
+      <path d="M24 2v4M9 12l3 2M39 12l-3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="next-up-copy">
+      <p class="next-up-tag">Coming Up Next</p>
+      <p class="next-up-label" id="nextUpText">Loading…</p>
+      <p class="next-up-meta" id="nextUpDate"></p>
+    </div>
+    <div class="next-up-countdown" id="nextUpCountdown"></div>
+  </div>
+</section>
+
+<!-- ── LEGEND ─────────────────────────────────────────────────── -->
+<section class="legend-section">
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch closed"></span> School Closed</div>
+    <div class="legend-item"><span class="legend-swatch key"></span> Key Date</div>
+    <div class="legend-item"><span class="legend-swatch event"></span> School Event</div>
+  </div>
+</section>
+
+<!-- ── CALENDAR GRID ──────────────────────────────────────────── -->
+<section class="cal-grid-section">
+  <div class="cal-grid">
+
+    <div class="month-card" id="august">
+      <div class="month-heading"><h2>August</h2><span>2026</span></div>
+      <div class="cal-row cat-event" data-start="2026-08-17" data-end="2026-08-21">
+        <div class="cal-date">Mon–Fri, Aug 17–21</div>
+        <div class="cal-label">Professional Development, Teacher Workdays</div>
+      </div>
+      <div class="cal-row cat-key" data-start="2026-08-24" data-end="2026-08-24">
+        <div class="cal-date">Mon, Aug 24</div>
+        <div class="cal-label">Back to School Meet &amp; Greet, 4–6 PM</div>
+      </div>
+      <div class="cal-row cat-key" data-start="2026-08-26" data-end="2026-08-26">
+        <div class="cal-date">Wed, Aug 26</div>
+        <div class="cal-label">First Day of School / Chapel at 2 PM</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="september">
+      <div class="month-heading"><h2>September</h2><span>2026</span></div>
+      <div class="cal-row cat-closed" data-start="2026-09-04" data-end="2026-09-04">
+        <div class="cal-date">Fri, Sep 4</div>
+        <div class="cal-label">Labor Day Weekend — School Closed</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2026-09-07" data-end="2026-09-07">
+        <div class="cal-date">Mon, Sep 7</div>
+        <div class="cal-label">Labor Day — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="october">
+      <div class="month-heading"><h2>October</h2><span>2026</span></div>
+      <div class="cal-row cat-closed" data-start="2026-10-09" data-end="2026-10-09">
+        <div class="cal-date">Fri, Oct 9</div>
+        <div class="cal-label">Parent/Teacher Conference Day &amp; PD Day — School Closed</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2026-10-12" data-end="2026-10-12">
+        <div class="cal-date">Mon, Oct 12</div>
+        <div class="cal-label">Columbus Day — School Closed</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2026-10-16" data-end="2026-10-16">
+        <div class="cal-date">Fri, Oct 16</div>
+        <div class="cal-label">End of First Marking Period</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2026-10-30" data-end="2026-10-30">
+        <div class="cal-date">Wed, Oct 30</div>
+        <div class="cal-label">Fall Festival</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="november">
+      <div class="month-heading"><h2>November</h2><span>2026</span></div>
+      <div class="cal-row cat-closed" data-start="2026-11-11" data-end="2026-11-11">
+        <div class="cal-date">Wed, Nov 11</div>
+        <div class="cal-label">Veterans Day — School Closed</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2026-11-20" data-end="2026-11-20">
+        <div class="cal-date">Fri, Nov 20</div>
+        <div class="cal-label">Community Service Day</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2026-11-23" data-end="2026-11-27">
+        <div class="cal-date">Mon–Fri, Nov 23–27</div>
+        <div class="cal-label">Thanksgiving Holiday — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="december">
+      <div class="month-heading"><h2>December</h2><span>2026</span></div>
+      <div class="cal-row cat-event" data-start="2026-12-16" data-end="2026-12-16">
+        <div class="cal-date">Wed, Dec 16</div>
+        <div class="cal-label">Christmas Program</div>
+      </div>
+      <div class="cal-row cat-key" data-start="2026-12-18" data-end="2026-12-18">
+        <div class="cal-date">Fri, Dec 18</div>
+        <div class="cal-label">Final Day of School Before Break — Noon Early Dismissal</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2026-12-21" data-end="2027-01-01">
+        <div class="cal-date">Mon, Dec 21–Fri, Jan 1</div>
+        <div class="cal-label">Christmas Holiday — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="january">
+      <div class="month-heading"><h2>January</h2><span>2027</span></div>
+      <div class="cal-row cat-closed" data-start="2027-01-04" data-end="2027-01-04">
+        <div class="cal-date">Mon, Jan 4</div>
+        <div class="cal-label">Faculty Professional Development — School Closed</div>
+      </div>
+      <div class="cal-row cat-key" data-start="2027-01-05" data-end="2027-01-05">
+        <div class="cal-date">Tue, Jan 5</div>
+        <div class="cal-label">Students Return to School</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2027-01-18" data-end="2027-01-18">
+        <div class="cal-date">Mon, Jan 18</div>
+        <div class="cal-label">Martin Luther King Jr. Day — School Closed</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2027-01-22" data-end="2027-01-22">
+        <div class="cal-date">Fri, Jan 22</div>
+        <div class="cal-label">End of Second Marking Period</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="february">
+      <div class="month-heading"><h2>February</h2><span>2027</span></div>
+      <div class="cal-row cat-closed" data-start="2027-02-12" data-end="2027-02-12">
+        <div class="cal-date">Fri, Feb 12</div>
+        <div class="cal-label">Faculty Work Day / Winter Holiday — School Closed</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2027-02-15" data-end="2027-02-15">
+        <div class="cal-date">Mon, Feb 15</div>
+        <div class="cal-label">Presidents' Day — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="march">
+      <div class="month-heading"><h2>March</h2><span>2027</span></div>
+      <div class="cal-row cat-event" data-start="2027-03-24" data-end="2027-03-24">
+        <div class="cal-date">Wed, Mar 24</div>
+        <div class="cal-label">Stations of the Cross at Chapel</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2027-03-26" data-end="2027-03-26">
+        <div class="cal-date">Fri, Mar 26</div>
+        <div class="cal-label">End of Third Marking Period</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2027-03-27" data-end="2027-03-27">
+        <div class="cal-date">Fri, Mar 27</div>
+        <div class="cal-label">Good Friday — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="april">
+      <div class="month-heading"><h2>April</h2><span>2027</span></div>
+      <div class="cal-row cat-closed" data-start="2027-03-29" data-end="2027-04-02">
+        <div class="cal-date">Mon, Mar 29–Fri, Apr 2</div>
+        <div class="cal-label">Spring Break — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="may">
+      <div class="month-heading"><h2>May</h2><span>2027</span></div>
+      <div class="cal-row cat-event" data-start="2027-05-03" data-end="2027-05-07">
+        <div class="cal-date">Mon–Fri, May 3–7</div>
+        <div class="cal-label">Teacher Appreciation Week</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2027-05-10" data-end="2027-05-15">
+        <div class="cal-date">Mon–Fri, May 10–15</div>
+        <div class="cal-label">Standardized Testing Week</div>
+      </div>
+      <div class="cal-row cat-event" data-start="2027-05-27" data-end="2027-05-27">
+        <div class="cal-date">Thu, May 27</div>
+        <div class="cal-label">Academic Awards Ceremonies</div>
+      </div>
+      <div class="cal-row cat-key" data-start="2027-05-28" data-end="2027-05-28">
+        <div class="cal-date">Fri, May 28</div>
+        <div class="cal-label">Last Day of School — Early Dismissal at Noon</div>
+      </div>
+      <div class="cal-row cat-closed" data-start="2027-05-31" data-end="2027-05-31">
+        <div class="cal-date">Mon, May 31</div>
+        <div class="cal-label">Memorial Day — School Closed</div>
+      </div>
+    </div>
+
+    <div class="month-card" id="june">
+      <div class="month-heading"><h2>June</h2><span>2027</span></div>
+      <div class="cal-row cat-event" data-start="2027-06-01" data-end="2027-06-01">
+        <div class="cal-date">Tue, Jun 1</div>
+        <div class="cal-label">2027 Summer Camps Begin</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  function loadPartial(id, file) {
+    fetch(file)
+      .then(r => r.text())
+      .then(html => { document.getElementById(id).innerHTML = html; })
+      .catch(() => console.warn('Could not load partial:', file));
+  }
+  loadPartial('nav-placeholder',    'navigation.html');
+  loadPartial('footer-placeholder', 'footer.html');
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('#navLinks button');
+    if (btn) {
+      const li = btn.parentElement;
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      return;
+    }
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+  function openMobileNav()  { document.getElementById('mobileNav')?.classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav')?.classList.remove('open'); document.body.style.overflow = '';       }
+
+  /* ── "Coming Up Next" beacon ──────────────────────────────── */
+  (function () {
+    const rows = Array.from(document.querySelectorAll('.cal-row[data-start]'));
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    let next = null;
+    let nextStart = null;
+
+    rows.forEach(row => {
+      const start = new Date(row.dataset.start + 'T00:00:00');
+      const end = new Date((row.dataset.end || row.dataset.start) + 'T00:00:00');
+      if (end >= today && (!nextStart || start < nextStart)) {
+        next = row;
+        nextStart = start;
+      }
+    });
+
+    const card = document.getElementById('nextUpCard');
+    const textEl = document.getElementById('nextUpText');
+    const dateEl = document.getElementById('nextUpDate');
+    const countEl = document.getElementById('nextUpCountdown');
+
+    if (!next) {
+      textEl.textContent = "That's a wrap on the calendar!";
+      dateEl.textContent = 'Enjoy the summer — see you in the fall.';
+      countEl.innerHTML = '';
+      return;
+    }
+
+    next.classList.add('is-next');
+    const start = new Date(next.dataset.start + 'T00:00:00');
+    const end = new Date((next.dataset.end || next.dataset.start) + 'T00:00:00');
+    const label = next.querySelector('.cal-label').textContent;
+    const dateText = next.querySelector('.cal-date').textContent;
+
+    textEl.textContent = label;
+    dateEl.textContent = dateText;
+
+    const msPerDay = 24 * 60 * 60 * 1000;
+    if (today >= start && today <= end) {
+      countEl.innerHTML = '<span class="num">Now</span><span class="unit">Happening</span>';
+    } else {
+      const days = Math.round((start - today) / msPerDay);
+      countEl.innerHTML = '<span class="num">' + days + '</span><span class="unit">' + (days === 1 ? 'Day Away' : 'Days Away') + '</span>';
+    }
+  })();
+</script>
+</body>
+</html>
