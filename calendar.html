@@ -3,89 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Calendar | Harbor Light Academy</title>
+  <title>School Calendar — Harbor Light Academy</title>
   <meta name="description" content="The 2026–27 school calendar for Harbor Light Academy — key dates, holidays, and school closings for the academic year." />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── Calendar page-specific styles ───────────────────────────
-       Scoped to this page only, in the same pattern as the
-       homepage hero overrides in index.html. Uses the site's
-       CSS variables (with sensible fallbacks) so colors stay
-       in sync with style.css if/when those variables exist there.
+       Scoped to this page only. The page-hero header, <main>
+       layout, and .section-label come from style.css — same
+       pattern as contact.html. Colors use the site's real CSS
+       variables: --navy, --navy-dark, --white, --gold,
+       --gold-light, --slate.
     ─────────────────────────────────────────────────────────── */
 
-    body {
-      background: var(--page-bg, #FAF8F3);
-      color: var(--text-dark, #20243A);
-    }
+    body { background: #ffffff; color: #111111; }
 
-    /* ── Page header banner ── */
-    .cal-header {
-      background: var(--navy-dark, #101435);
-      color: var(--white, #FFFFFF);
-      padding: 64px 24px 48px;
-      text-align: center;
-    }
-    .cal-eyebrow {
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold, #C9A84C);
-      margin-bottom: 14px;
-    }
-    .cal-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 900;
-      font-size: clamp(2rem, 5vw, 3.1rem);
-      margin: 0 0 12px;
-    }
-    .cal-subtitle {
+    /* ── Intro copy + actions (sits in <main>, below the shared page-hero) ── */
+    .cal-intro {
       font-family: 'Source Sans 3', sans-serif;
       font-weight: 300;
       font-size: 1.05rem;
-      color: rgba(255,255,255,0.78);
-      max-width: 560px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
+      color: var(--slate);
+      max-width: 640px;
+      line-height: 1.65;
+      margin: 0 0 28px;
     }
     .cal-header-actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 14px;
+      margin-bottom: 44px;
     }
     .cal-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 26px;
-      border-radius: 8px;
+      padding: 14px 30px;
+      border-radius: 7px;
       text-decoration: none;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
     }
-    .cal-btn.gold { background: var(--gold, #C9A84C); color: var(--navy-dark, #101435); }
-    .cal-btn.gold:hover { background: var(--gold-light, #E3C474); transform: translateY(-2px); }
-    .cal-btn.glass {
-      background: rgba(255,255,255,0.09);
-      color: var(--white, #FFFFFF);
-      border: 1.5px solid rgba(201,168,76,0.45);
+    .cal-btn.gold { background: var(--gold); color: var(--navy-dark); }
+    .cal-btn.gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .cal-btn.outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid rgba(26,32,80,0.18);
     }
-    .cal-btn.glass:hover { background: rgba(255,255,255,0.16); border-color: var(--gold, #C9A84C); transform: translateY(-2px); }
+    .cal-btn.outline:hover { border-color: var(--gold); color: var(--navy); transform: translateY(-2px); }
 
     /* ── Quick month nav ── */
     .cal-quicknav-wrap {
       position: sticky;
       top: 0;
       z-index: 5;
-      background: var(--page-bg, #FAF8F3);
+      background: #ffffff;
       border-bottom: 1px solid rgba(16,20,53,0.08);
     }
     .cal-quicknav {
@@ -102,7 +79,7 @@
       padding: 7px 16px;
       border-radius: 999px;
       background: rgba(16,20,53,0.05);
-      color: var(--navy-dark, #101435);
+      color: var(--navy-dark);
       text-decoration: none;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.82rem;
@@ -110,7 +87,7 @@
       white-space: nowrap;
       transition: background 0.15s, color 0.15s;
     }
-    .cal-quicknav a:hover { background: var(--gold, #C9A84C); color: var(--navy-dark, #101435); }
+    .cal-quicknav a:hover { background: var(--gold); color: var(--navy-dark); }
 
     /* ── "Next up" beacon card ── */
     .next-up-section { padding: 36px 24px 0; }
@@ -120,8 +97,8 @@
       display: flex;
       align-items: center;
       gap: 18px;
-      background: var(--navy-dark, #101435);
-      color: var(--white, #FFFFFF);
+      background: var(--navy-dark);
+      color: var(--white);
       border-radius: 14px;
       padding: 22px 28px;
       box-shadow: 0 10px 30px rgba(16,20,53,0.18);
@@ -130,7 +107,7 @@
       flex: 0 0 auto;
       width: 44px;
       height: 44px;
-      color: var(--gold, #C9A84C);
+      color: var(--gold);
     }
     .next-up-copy { flex: 1; min-width: 0; }
     .next-up-tag {
@@ -139,7 +116,7 @@
       font-weight: 700;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--gold, #C9A84C);
+      color: var(--gold);
       margin-bottom: 4px;
     }
     .next-up-label {
@@ -163,7 +140,7 @@
       font-family: 'Playfair Display', serif;
       font-weight: 900;
       font-size: 1.8rem;
-      color: var(--gold-light, #E3C474);
+      color: var(--gold-light);
       display: block;
       line-height: 1;
     }
@@ -185,7 +162,7 @@
       align-items: center;
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.86rem;
-      color: var(--text-muted, #5B6079);
+      color: var(--slate);
     }
     .legend-item { display: flex; align-items: center; gap: 8px; }
     .legend-swatch { width: 14px; height: 14px; border-radius: 4px; flex: 0 0 auto; }
@@ -215,19 +192,19 @@
       gap: 8px;
       margin-bottom: 14px;
       padding-bottom: 10px;
-      border-bottom: 2px solid var(--gold, #C9A84C);
+      border-bottom: 2px solid var(--gold);
     }
     .month-heading h2 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-size: 1.25rem;
       margin: 0;
-      color: var(--navy-dark, #101435);
+      color: var(--navy-dark);
     }
     .month-heading span {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.82rem;
-      color: var(--text-muted, #5B6079);
+      color: var(--slate);
     }
     .cal-row {
       display: flex;
@@ -241,9 +218,9 @@
     }
     .cal-row.cat-closed { border-left-color: var(--tan-border, #D9B66B); background: var(--tan, #F6E9CB); }
     .cal-row.cat-key    { border-left-color: var(--blue-border, #6F95C2); background: var(--blue, #DCE7F5); }
-    .cal-row.cat-event  { border-left-color: var(--gold, #C9A84C); background: #FFFFFF; }
+    .cal-row.cat-event  { border-left-color: var(--gold); background: #FFFFFF; }
     .cal-row.is-next {
-      box-shadow: 0 0 0 2px var(--gold, #C9A84C) inset;
+      box-shadow: 0 0 0 2px var(--gold) inset;
     }
     .cal-date {
       flex: 0 0 auto;
@@ -251,12 +228,12 @@
       font-family: 'Source Sans 3', sans-serif;
       font-weight: 700;
       font-size: 0.86rem;
-      color: var(--navy-dark, #101435);
+      color: var(--navy-dark);
     }
     .cal-label {
       font-family: 'Source Sans 3', sans-serif;
       font-size: 0.9rem;
-      color: var(--text-dark, #20243A);
+      color: #111111;
       line-height: 1.4;
     }
 
@@ -277,16 +254,14 @@
 <!-- Navigation -->
 <div id="nav-placeholder"></div>
 
-<!-- ── PAGE HEADER ────────────────────────────────────────────── -->
-<header class="cal-header">
-  <p class="cal-eyebrow">2026 – 2027 Academic Year</p>
-  <h1 class="cal-title">School Calendar</h1>
-  <p class="cal-subtitle">Key dates, holidays, and closings for the Harbor Light Academy school year — from Back to School in August through the start of Summer Camps next June.</p>
-  <div class="cal-header-actions">
-    <a href="HLA-2026-27-School-Calendar.pdf" class="cal-btn gold" download>Download PDF ↓</a>
-    <a href="#august" class="cal-btn glass">Jump to Calendar ↓</a>
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">Harbor Light Academy</p>
+    <h1>School Calendar</h1>
   </div>
-</header>
+</div>
 
 <!-- ── QUICK MONTH NAV ────────────────────────────────────────── -->
 <div class="cal-quicknav-wrap">
@@ -304,6 +279,16 @@
     <a href="#june">Jun</a>
   </nav>
 </div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+
+  <p class="section-label">2026 – 2027 Academic Year</p>
+  <p class="cal-intro">Key dates, holidays, and closings for the Harbor Light Academy school year — from Back to School in August through the start of Summer Camps next June.</p>
+  <div class="cal-header-actions">
+    <a href="HLA-2026-27-School-Calendar.pdf" class="cal-btn gold" download>Download PDF ↓</a>
+    <a href="#august" class="cal-btn outline">Jump to Calendar ↓</a>
+  </div>
 
 <!-- ── NEXT UP ────────────────────────────────────────────────── -->
 <section class="next-up-section">
@@ -506,6 +491,8 @@
 
   </div>
 </section>
+
+</main>
 
 <!-- Footer -->
 <div id="footer-placeholder"></div>
