@@ -260,6 +260,22 @@
 
   function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
   function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+
+  /* Bio read-more toggles */
+  function toggleBioSection(toggleId, bioId) {
+    const bio = document.getElementById(bioId);
+    const btn = document.getElementById(toggleId);
+    const isHidden = bio.hidden;
+    bio.hidden = !isHidden;
+    btn.textContent = isHidden ? 'Read Less ▲' : 'Read Bio ▾';
+  }
+  function toggleHaileyBio() { toggleBioSection('hailey-toggle', 'hailey-bio'); }
+  function toggleBio()       { toggleBioSection('lina-toggle',   'lina-bio');   }
+  function toggleMarthaBio() { toggleBioSection('martha-toggle', 'martha-bio'); }
+  function toggleEmilyBio()  { toggleBioSection('emily-toggle',  'emily-bio');  }
+  function toggleKatieBio()  { toggleBioSection('katie-toggle',  'katie-bio');  }
+  function toggleMaggieBio() { toggleBioSection('maggie-toggle', 'maggie-bio'); }
+  function toggleLesleyBio() { toggleBioSection('lesley-toggle', 'lesley-bio'); }
 </script>
 </body>
 </html>
