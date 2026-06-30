@@ -183,6 +183,26 @@
     </div>
   </div>
 
+  <!-- Shannon Rutledge -->
+  <div class="bio-card" id="shannon">
+    <div class="bio-photo">
+      <img src="images/shannon-rutledge.jpg" alt="Shannon Rutledge" />
+    </div>
+    <div class="bio-info">
+      <p class="role">Teacher</p>
+      <h2>Shannon Rutledge</h2>
+      <ul style="font-size:0.88rem; line-height:1.9; color:#444; margin-top:12px; padding-left:1.2em; list-style:none;">
+        <li>B.A. in Psychology, Mary Washington University</li>
+      </ul>
+      <button class="bio-toggle" onclick="toggleShannonBio()" id="shannon-toggle">Read Bio ▾</button>
+      <div id="shannon-bio" hidden>
+        <p>Shannon Rutledge earned a B.A. in Psychology from Mary Washington University and holds a Virginia teaching license in PK–4th grade. Mrs. Rutledge has 35 years of experience working with children in both public and private schools and is passionate about helping students grow academically, spiritually, and personally.</p>
+        <p>She believes that strong relationships are the foundation of a successful classroom. Her goal is to foster a safe, nurturing environment where students are challenged academically, encouraged to grow in character, and given the confidence to reach their full potential. She enjoys making learning engaging, meaningful, and hands-on while helping students develop curiosity, creativity, and a lifelong love of learning. Mrs. Rutledge provides engaging, meaningful instruction that challenges students to think critically, develop strong character, and pursue excellence. She believes that building positive relationships with students and their families is one of her highest priorities and she truly believes that when home and school work together, children thrive.</p>
+        <p>She has lived in the southern end of Isle of Wight her entire life and she is the proud parent of two adult sons. She enjoys spending time with her family and her animals, reading, and spending time in Chincoteague viewing the wild ponies.</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Maggie Scott -->
   <div class="bio-card" id="maggie">
     <div class="bio-photo">
@@ -278,6 +298,7 @@
   function toggleEmilyBio()  { toggleBioSection('emily-toggle',  'emily-bio');  }
   function toggleKatieBio()  { toggleBioSection('katie-toggle',  'katie-bio');  }
   function toggleMaggieBio() { toggleBioSection('maggie-toggle', 'maggie-bio'); }
+  function toggleShannonBio(){ toggleBioSection('shannon-toggle','shannon-bio'); }
   function toggleLesleyBio() { toggleBioSection('lesley-toggle', 'lesley-bio'); }
 </script>
 </body>
