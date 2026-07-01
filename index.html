@@ -176,7 +176,126 @@
     .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
   </style>
 </head>
-<body>
+<!-- ── RECRUITING EVENT POPUP ───────────────────────────────── -->
+<!-- Paste this block just before the closing </body> tag on the homepage -->
+
+<style>
+  #event-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  #event-overlay.active {
+    display: flex;
+  }
+  #event-popup {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+    max-width: 480px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    animation: popupFadeIn 0.3s ease;
+  }
+  @keyframes popupFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  #event-popup img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #event-popup-footer {
+    padding: 1rem 1.25rem 1.25rem;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--navy, #1a2e4a);
+  }
+  #event-popup-footer p {
+    color: #fff;
+    font-size: 0.85rem;
+    margin: 0 0 0.75rem;
+    opacity: 0.85;
+  }
+  #popup-close-btn {
+    display: inline-block;
+    padding: 0.55rem 1.75rem;
+    background: var(--gold, #c9a84c);
+    color: #fff;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  #popup-close-btn:hover { opacity: 0.85; }
+  #popup-dismiss {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+  #popup-dismiss:hover { background: rgba(0,0,0,0.7); }
+</style>
+
+<div id="event-overlay" role="dialog" aria-modal="true" aria-label="Upcoming Event">
+  <div id="event-popup">
+    <button id="popup-dismiss" onclick="closeEventPopup()" aria-label="Close">&times;</button>
+    <img
+      src="images/popcorn-social-flier.jpg"
+      alt="A Popcorn Social — Tuesday, July 7th from 4–6 PM at Harbor Light Academy"
+    />
+    <div id="event-popup-footer">
+      <p>We'd love to see you there!</p>
+      <button id="popup-close-btn" onclick="closeEventPopup()">Got it, thanks!</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show popup after 2.5 seconds; close on overlay click or button click
+  setTimeout(function () {
+    document.getElementById('event-overlay').classList.add('active');
+  }, 1500);
+
+  function closeEventPopup() {
+    document.getElementById('event-overlay').classList.remove('active');
+  }
+
+  // Close if user clicks the dark backdrop
+  document.getElementById('event-overlay').addEventListener('click', function (e) {
+    if (e.target === this) closeEventPopup();
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEventPopup();
+  });
+</script>
+<!-- ── END RECRUITING EVENT POPUP ───────────────────────────── -->
+  <body>
 
 <!-- Navigation -->
 <div id="nav-placeholder"></div>
