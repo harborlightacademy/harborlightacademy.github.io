@@ -78,8 +78,28 @@
     </div>
   </div>
 
-  <!-- FACULTY -->
-  <div class="section-label" style="margin-top: 0;">Faculty</div>
+  <!-- FACULTY & STAFF -->
+  <div class="section-label" style="margin-top: 0;">Faculty & Staff</div>
+
+  <!-- Laura Buck -->
+  <div class="bio-card" id="laura">
+    <div class="bio-photo">
+      <img src="images/laura-buck.jpg" alt="Laura Buck" />
+    </div>
+    <div class="bio-info">
+      <p class="role">Office Administrator</p>
+      <h2>Laura Buck</h2>
+      <ul style="font-size:0.88rem; line-height:1.9; color:#444; margin-top:12px; padding-left:1.2em; list-style:none;">
+        <li>B.A. in Christian Education, Bryan College</li>
+      </ul>
+      <button class="bio-toggle" onclick="toggleLauraBio()" id="laura-toggle">Read Bio ▾</button>
+      <div id="laura-bio" hidden>
+        <p>Mrs. Buck earned her Bachelor's degree in Christian Education from Bryan College and has been blessed with a career centered on serving others. She began her professional journey as an Office Administrator before spending twelve wonderful years in childcare while raising her two children. Most recently, she served as the Office Manager at a private Christian school for three years, where she discovered her passion for building meaningful relationships with students and their families.</p>
+        <p>Mrs. Buck loves creating a warm, welcoming environment where every child and family feels known, valued, and supported. She is passionate about serving others and believes that strong relationships are at the heart of a thriving community.</p>
+        <p>Outside of school, Mrs. Buck enjoys spending time with her family, being outdoors, and running.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Hailey Burke -->
   <div class="bio-card" id="hailey">
@@ -245,7 +265,7 @@
       </div>
     </div>
   </div>
-
+  
 </main>
 
 <!-- Footer -->
@@ -300,6 +320,7 @@
   function toggleMaggieBio() { toggleBioSection('maggie-toggle', 'maggie-bio'); }
   function toggleShannonBio(){ toggleBioSection('shannon-toggle','shannon-bio'); }
   function toggleLesleyBio() { toggleBioSection('lesley-toggle', 'lesley-bio'); }
+  function toggleLauraBio()  { toggleBioSection('laura-toggle',  'laura-bio');  }
 </script>
 </body>
 </html>
