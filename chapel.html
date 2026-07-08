@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapel — Harbor Light Academy</title>
+  <meta name="description" content="Harbor Light Academy's weekly Chapel — the spiritual anchor of our week, led by Pastor Nathan Webb of Coastal Community Church and a rotating team of local pastors and school leaders." />
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "102f3471d64744a490f6c7a74d954b9e"}'></script>
+  <!-- End Cloudflare Web Analytics --> 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    /* Intro copy under the hero */
+    .chapel-intro {
+      max-width: 820px;
+      margin: 0 auto 64px;
+      text-align: center;
+    }
+    .chapel-intro p {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: #333;
+    }
+
+    /* Chapel layout (mirrors mission-block) */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    .mission-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .mission-logo img {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      border-radius: 12px;
+      filter: drop-shadow(0 8px 32px rgba(26,32,80,0.13));
+    }
+
+    .mission-text .role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .mission-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+    .mission-text p {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #333;
+    }
+    .mission-text .pastor-name {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-top: 22px;
+    }
+    .mission-text .pastor-title {
+      display: block;
+      font-size: 0.95rem;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    /* Partner church callout */
+    .chapel-partner {
+      margin-top: 96px;
+      padding: 28px 48px;
+      background: #f6f5f0;
+      border-radius: 16px;
+      text-align: center;
+    }
+    .chapel-partner .role {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .chapel-partner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3.2vw, 2.2rem);
+      font-weight: 900;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .chapel-partner img {
+      max-width: 200px;
+      width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .chapel-partner a.partner-link {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.15s;
+    }
+    .chapel-partner a.partner-link:hover {
+      background: var(--gold);
+    }
+
+    @media (max-width: 760px) {
+      .mission-block {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .mission-logo { order: -1; }
+      .mission-logo img { max-width: 260px; }
+      .chapel-partner { padding: 40px 24px; }
+    }
+
+    /* Social icon nav styles */
+    .nav-fb {
+      display: flex !important;
+      align-items: center;
+      padding: 8px 10px !important;
+      color: rgba(255,255,255,0.65) !important;
+      transition: color 0.15s !important;
+    }
+    .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav-placeholder"></div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">Harbor Light Academy</p>
+    <h1>Chapel</h1>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+
+  <div class="chapel-intro">
+    <p>Harbor Light Academy is a nondenominational Christian school that welcomes students and families of all faiths. Each Wednesday, students from preschool through 6th grade gather for Chapel, which serves as the spiritual anchor of our week.</p>
+  </div>
+
+  <div class="mission-block">
+
+    <div class="mission-logo">
+      <img src="images/nathan-webb.jpg" alt="Pastor Nathan Webb" />
+    </div>
+
+    <div class="mission-text">
+      <p class="role">Chapel Leadership</p>
+      <h2>Growing in Faith, Together</h2>
+      <p>Pastor Nathan Webb of Coastal Community Church leads a rotating team of local pastors and school leaders who encourage students to grow in their relationship with Jesus through this time of prayer, music, scripture, and discussion.</p>
+      <span class="pastor-name">Pastor Nathan Webb</span>
+      <span class="pastor-title">Coastal Community Church</span>
+    </div>
+
+  </div>
+
+  <div class="chapel-partner">
+    <p class="role">In Partnership With</p>
+    <img src="images/coastal.jpg" alt="Coastal Community Church" />
+    <h2>Coastal Community Church</h2>
+    <a class="partner-link" href="https://gocoastal.org/batterypark/" target="_blank" rel="noopener noreferrer">Visit Coastal Community Church →</a>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  function loadPartial(id, file) {
+    fetch(file)
+      .then(r => r.text())
+      .then(html => { document.getElementById(id).innerHTML = html; })
+      .catch(() => console.warn('Could not load partial:', file));
+  }
+  loadPartial('nav-placeholder',    'navigation.html');
+  loadPartial('footer-placeholder', 'footer.html');
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('#navLinks button');
+    if (btn) {
+      const li = btn.parentElement;
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      return;
+    }
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+  function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+
+</body>
+</html>
