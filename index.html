@@ -19,7 +19,7 @@
   "logo": "https://www.harborlightacademy.com/images/logo.jpg",
   "image": "https://www.harborlightacademy.com/images/hero.jpg",  
   "email": "admissions@harborlightacademy.com",
-  "telephone": "+1-757-696-0900",
+  "telephone": "+1-948-300-4333",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "14353 Benns Church Blvd",
@@ -174,13 +174,7 @@
       transition: color 0.15s !important;
     }
     .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
-  </style>
-</head>
-<!--
-  ── RECRUITING EVENT POPUP (disabled — uncomment this whole block to re-enable) ──
-Paste this block just before the closing </body> tag on the homepage
 
-<style>
   #event-overlay {
     display: none;
     position: fixed;
@@ -198,9 +192,10 @@ Paste this block just before the closing </body> tag on the homepage
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-    max-width: 480px;
+    max-width: 420px;
+    max-height: 85vh;
     width: 100%;
-    overflow: hidden;
+    overflow-y: auto;
     position: relative;
     animation: popupFadeIn 0.3s ease;
   }
@@ -210,7 +205,9 @@ Paste this block just before the closing </body> tag on the homepage
   }
   #event-popup img {
     width: 100%;
+    max-height: 65vh;
     height: auto;
+    object-fit: contain;
     display: block;
   }
   #event-popup-footer {
@@ -259,44 +256,8 @@ Paste this block just before the closing </body> tag on the homepage
     transition: background 0.15s;
   }
   #popup-dismiss:hover { background: rgba(0,0,0,0.7); }
-</style>
-
-<div id="event-overlay" role="dialog" aria-modal="true" aria-label="Upcoming Event">
-  <div id="event-popup">
-    <button id="popup-dismiss" onclick="closeEventPopup()" aria-label="Close">&times;</button>
-    <img
-      src="images/popcorn-social-flier.jpg"
-      alt="A Popcorn Social — Tuesday, July 7th from 4–6 PM at Harbor Light Academy"
-    />
-    <div id="event-popup-footer">
-      <p>We'd love to see you there!</p>
-      <button id="popup-close-btn" onclick="closeEventPopup()">Got it, thanks!</button>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Show popup after 2.5 seconds; close on overlay click or button click
-  setTimeout(function () {
-    document.getElementById('event-overlay').classList.add('active');
-  }, 1500);
-
-  function closeEventPopup() {
-    document.getElementById('event-overlay').classList.remove('active');
-  }
-
-  // Close if user clicks the dark backdrop
-  document.getElementById('event-overlay').addEventListener('click', function (e) {
-    if (e.target === this) closeEventPopup();
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeEventPopup();
-  });
-</script>
-── END RECRUITING EVENT POPUP ──
--->
+  </style>
+</head>
   <body>
 
 <!-- Navigation -->
@@ -355,6 +316,40 @@ Paste this block just before the closing </body> tag on the homepage
   });
   function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
   function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+
+<!-- ── RECRUITING EVENT POPUP ─────────────────────────────────── -->
+<div id="event-overlay" role="dialog" aria-modal="true" aria-label="Upcoming Event">
+  <div id="event-popup">
+    <button id="popup-dismiss" onclick="closeEventPopup()" aria-label="Close">&times;</button>
+    <img
+      src="images/taco_bout_HLA.jpg"
+      alt="Let's Taco 'bout HLA — Thursday, July 30th from 5–7 PM at Harbor Light Academy"
+    />
+    <div id="event-popup-footer">
+      <p>We'd love to see you there!</p>
+      <button id="popup-close-btn" onclick="closeEventPopup()">Got it, thanks!</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Show popup after 1.5 seconds; close on overlay click, button click, or Escape
+  setTimeout(function () {
+    document.getElementById('event-overlay').classList.add('active');
+  }, 1500);
+
+  function closeEventPopup() {
+    document.getElementById('event-overlay').classList.remove('active');
+  }
+
+  document.getElementById('event-overlay').addEventListener('click', function (e) {
+    if (e.target === this) closeEventPopup();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEventPopup();
+  });
 </script>
 </body>
 </html>
