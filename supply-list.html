@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026-27 School Supply List | Harbor Light Academy</title>
+  <meta name="description" content="Grade-by-grade school supply lists for the 2026-27 school year at Harbor Light Academy in Smithfield, VA." />
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "102f3471d64744a490f6c7a74d954b9e"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Supply list page-specific styles ───────────────────────── */
+
+    .supply-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .supply-card {
+      background: var(--white);
+      border: 1px solid rgba(26,32,80,0.1);
+      border-top: 3px solid var(--gold);
+      border-radius: 8px;
+      padding: 24px 24px 26px;
+    }
+    .supply-card h2 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(26,32,80,0.1);
+    }
+    .supply-card ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--slate);
+    }
+    .supply-card li {
+      position: relative;
+      padding: 7px 0 7px 18px;
+    }
+    .supply-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 15px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .supply-card li + li { border-top: 1px dashed rgba(26,32,80,0.08); }
+
+    .supply-card.wishlist {
+      margin-top: 18px;
+      background: var(--gold-pale);
+      border-top-color: var(--navy);
+    }
+    .supply-card.wishlist h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin: 0 0 12px;
+    }
+
+    .grade-band-note {
+      background: var(--navy-dark);
+      color: var(--white);
+      border-radius: 8px;
+      padding: 28px 30px;
+      margin-bottom: 56px;
+    }
+    .grade-band-note h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin: 0 0 14px;
+      color: var(--gold-light);
+    }
+    .grade-band-note ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.88);
+    }
+    .grade-band-note li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+    }
+    .grade-band-note li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .grade-band-note a { color: var(--gold-light); }
+
+    .supply-intro {
+      font-size: 0.97rem;
+      line-height: 1.7;
+      color: var(--slate);
+      max-width: 640px;
+      margin-bottom: 44px;
+    }
+
+    .supply-print { text-align: center; margin-top: 8px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .supply-print a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      border-radius: 6px;
+      padding: 11px 26px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s, color 0.15s;
+    }
+    .supply-print a:hover { background: var(--navy); color: var(--white); }
+
+    @media print {
+      nav, .mobile-nav, footer, .supply-print { display: none !important; }
+      .page-hero { height: auto; padding: 12px 0 20px; }
+      .page-hero-bg { display: none; }
+      .page-hero-text .eyebrow, .page-hero-text h1 { color: var(--navy-dark); }
+      .grade-band-note { background: #fff; color: var(--navy-dark); border: 1px solid rgba(26,32,80,0.15); }
+      .grade-band-note h3, .grade-band-note a { color: var(--navy-dark); }
+      .grade-band-note li::before, .supply-card li::before { background: #333; }
+      .supply-card { break-inside: avoid; }
+    }
+
+    @media (max-width: 640px) {
+      .grade-band-note { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav-placeholder"></div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">2026&ndash;27 School Year</p>
+    <h1>School Supply List</h1>
+  </div>
+</section>
+
+<main>
+
+  <p class="supply-intro">Supplies below are organized by grade. All items should be labeled with your child's name and can be brought to school on <strong>Anchor's Away Back to School Night, August 24th.</strong></p>
+
+  <p class="section-label">Early Childhood</p>
+  <div class="supply-grid">
+
+    <div class="supply-card">
+      <h2>Preschool</h2>
+      <ul>
+        <li>Full size backpack</li>
+        <li>Lunch box</li>
+        <li>Water bottle</li>
+        <li>Extra change of clothes</li>
+        <li>Nap mat</li>
+        <li>Blanket for rest time</li>
+        <li>Baby wipes</li>
+        <li>Clorox wipes</li>
+        <li>2 boxes of tissues</li>
+        <li>Ziploc bags</li>
+        <li>Paper towels</li>
+        <li>2 plastic folders</li>
+        <li>1 notebook</li>
+        <li>1 1&Prime; inch binder</li>
+        <li>2 packs of crayons</li>
+        <li>1 pack of colored pencils</li>
+        <li>1 pack of washable markers</li>
+        <li>1 liquid glue</li>
+        <li>2 glue sticks</li>
+        <li>2 big pink erasers</li>
+      </ul>
+    </div>
+
+    <div class="supply-card">
+      <h2>Kindergarten</h2>
+      <ul>
+        <li>2 plastic pencil boxes</li>
+        <li>12 pack of #2 pencils</li>
+        <li>1 (3) pack Elmer giant glue sticks</li>
+        <li>1 bottle of white glue</li>
+        <li>2 boxes of 24 (or higher) count Crayola crayons</li>
+        <li>12 count colored pencils</li>
+        <li>1 pair of blunt tip scissors</li>
+        <li>4 black dry erase markers</li>
+        <li>1 set of Crayola watercolors</li>
+        <li>2 wide ruled spiral notebooks</li>
+        <li>2 boxes of tissues and 1 pack of baby wipes</li>
+        <li>2 cans of Clorox wipes</li>
+        <li>Backpack (no wheels please)</li>
+      </ul>
+    </div>
+
+    <div class="supply-card">
+      <h2>1st &amp; 2nd Grade</h2>
+      <ul>
+        <li>1 plastic pencil box</li>
+        <li>1 zipper pencil pouch</li>
+        <li>2 boxes of #2 pencils &mdash; Ticonderoga preferred</li>
+        <li>12 wedge pencil cap erasers</li>
+        <li>2 bar erasers</li>
+        <li>1 primary journal with unlined space at the top</li>
+        <li>8 large Elmer glue sticks or 16 small</li>
+        <li>2 boxes of 24 count Crayola crayons</li>
+        <li>2 boxes 8 count Crayola washable markers, classic colors</li>
+        <li>1 pair of blunt tip scissors</li>
+        <li>4 black dry erase markers, fine tip</li>
+        <li>2 plastic folders with pockets</li>
+        <li>2 boxes tissues</li>
+        <li>1 water bottle &mdash; no spill required</li>
+        <li>Ziploc slider bags &mdash; quart</li>
+        <li>Ziploc slider bags &mdash; gallon</li>
+        <li>1 container Lysol wipes</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="grade-band-note">
+    <h3>PreK through 2nd Grade</h3>
+    <ul>
+      <li>On Amazon: <em>NIrV, Adventure Bible for Early Readers</em>, Hardcover, Full Color by Zondervan (Author), Lawrence O. Richards (Editor)</li>
+      <li>Supplies should be labeled and can be brought to school on Anchor's Away Back to School Night, August 24th.</li>
+      <li>Additional supplies for home use: pencil box, pencils, scissors, crayons, and glue sticks.</li>
+    </ul>
+  </div>
+
+  <p class="section-label">Upper Elementary</p>
+  <div class="supply-grid">
+
+    <div class="supply-card">
+      <h2>3rd &amp; 4th Grade</h2>
+      <ul>
+        <li>5 &ndash; 100+ page spiral notebooks (one subject, wide ruled)</li>
+        <li>2 plastic pocket folders with clear front pocket</li>
+        <li>1 &ndash; 1 inch binder with pockets w/ dividers</li>
+        <li>2 composition notebooks (different colors)</li>
+        <li>2 packs of wide ruled notebook paper</li>
+        <li>1 soft pencil pouch</li>
+        <li>4 yellow highlighters</li>
+        <li>1 &ndash; 24 count of Crayola twistable colored pencils</li>
+        <li>1 &ndash; 12 pack Crayola washable markers</li>
+        <li>1 pack black fine tip Sharpie markers</li>
+        <li>1 pair 5 inch scissors</li>
+        <li>1 pack index cards (Oxford ruled)</li>
+        <li>1 leak-proof refillable water bottle</li>
+        <li>3 boxes of tissues</li>
+        <li>Disinfectant wipes</li>
+        <li>1 large bottle hand sanitizer</li>
+        <li>1 box quart sized Ziploc bags</li>
+      </ul>
+      <div class="supply-card wishlist">
+        <h3>Optional Classroom Wishlist</h3>
+        <ul>
+          <li>Individually wrapped candy</li>
+          <li>Gently used chapter books</li>
+          <li>Colored copy paper</li>
+          <li>Construction paper</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="supply-card">
+      <h2>5th &amp; 6th Grade</h2>
+      <ul>
+        <li>1 2&Prime; binder</li>
+        <li>1 1&Prime; binder for the Reader's Notebook (both hard-sided, please)</li>
+        <li>2 packs of wide-ruled notebook paper, preferably with reinforced holes</li>
+        <li>4 packs of #2 pencils (mechanical pencils are fine per student preference)</li>
+        <li>2 plastic folders with pockets, bonus points if they hole-punch into a binder</li>
+        <li>4 Sharpie gel highlighters (these do not bleed)</li>
+        <li>4 black or blue dry erase markers</li>
+        <li>2 block erasers (Pink Pearl, for example)</li>
+        <li>2 pairs of scissors (kid sized)</li>
+        <li>1 pack of crayons (must fit in a pencil box)</li>
+        <li>1 pack of colored pencils</li>
+        <li>4 glue sticks</li>
+        <li>4 red pens</li>
+        <li>1 pencil box</li>
+        <li>2 boxes tissues (more may be requested as the year progresses)</li>
+        <li>1 container Lysol/Clorox type wipes</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="grade-band-note">
+    <h3>3rd through 6th Grade</h3>
+    <ul>
+      <li>On Amazon: <em>NLT GO Bible for Kids</em> (Hardcover): A Life-Changing Bible for Kids by New Living Translation (Author), Tyndale (Creator)</li>
+      <li>Supplies should be labeled and can be brought to school on Anchor's Away Back to School Night, August 24th.</li>
+    </ul>
+  </div>
+
+  <div class="supply-print">
+    <a href="2026-2027-supply-list-1.pdf" target="_blank" rel="noopener noreferrer">Download PDF (Preschool&ndash;2nd)</a>
+    <a href="2026-2027-supply-list-2.pdf" target="_blank" rel="noopener noreferrer">Download PDF (3rd&ndash;6th)</a>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  function loadPartial(id, file) {
+    fetch(file)
+      .then(r => r.text())
+      .then(html => { document.getElementById(id).innerHTML = html; })
+      .catch(() => console.warn('Could not load partial:', file));
+  }
+  loadPartial('nav-placeholder',    'navigation.html');
+  loadPartial('footer-placeholder', 'footer.html');
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('#navLinks button');
+    if (btn) {
+      const li = btn.parentElement;
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      return;
+    }
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+  function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+</body>
+</html>
