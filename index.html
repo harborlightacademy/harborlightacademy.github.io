@@ -175,6 +175,11 @@
     }
     .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
 
+  /* ── Recruiting event popup styles ──────────────────────────
+     Popup is currently DISABLED (markup + trigger script below
+     are commented out). Styles left in place so it can be
+     re-enabled quickly — just uncomment the HTML/JS blocks.
+  ─────────────────────────────────────────────────────────── */
   #event-overlay {
     display: none;
     position: fixed;
@@ -319,6 +324,9 @@
 </script>
 
 <!-- ── RECRUITING EVENT POPUP ─────────────────────────────────── -->
+<!-- Temporarily disabled. To re-enable, uncomment this block and
+     the trigger script below.
+
 <div id="event-overlay" role="dialog" aria-modal="true" aria-label="Upcoming Event">
   <div id="event-popup">
     <button id="popup-dismiss" onclick="closeEventPopup()" aria-label="Close">&times;</button>
@@ -351,5 +359,7 @@
     if (e.key === 'Escape') closeEventPopup();
   });
 </script>
+
+-->
 </body>
 </html>
