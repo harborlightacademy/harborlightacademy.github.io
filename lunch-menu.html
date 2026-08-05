@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunch Menu — Harbor Light Academy</title>
+  <meta name="description" content="Harbor Light Academy 2026-27 lunch menu — daily hot lunch options, sides, and pricing." />
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "102f3471d64744a490f6c7a74d954b9e"}'></script>
+  <!-- End Cloudflare Web Analytics --> 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #ffffff; color: #111111; }
+
+    .dress-intro {
+      text-align: center;
+      max-width: 580px;
+      margin: 0 auto 40px;
+    }
+    .dress-intro p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--navy);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 640px) {
+      .dress-intro p { font-size: 1rem; }
+    }
+
+    .mobile-nav-close { margin-top: 64px !important; }
+    .nav-fb {
+      display: flex !important;
+      align-items: center;
+      padding: 8px 10px !important;
+      color: rgba(255,255,255,0.65) !important;
+      transition: color 0.15s !important;
+    }
+    .nav-fb:hover { color: #1877F2 !important; background: rgba(255,255,255,0.08) !important; }
+
+    /* ══ PRICING BANNER — prominent, up top ══════════════════ */
+    .price-banner {
+      position: relative;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      border-radius: 16px;
+      padding: 36px 32px;
+      margin: 0 auto 64px;
+      max-width: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(16,20,53,0.22);
+    }
+    .price-banner::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(201,168,76,0.28) 0%, rgba(201,168,76,0) 70%);
+      pointer-events: none;
+    }
+    .price-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    .price-stat {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .price-stat .amount {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(1.7rem, 4vw, 2.2rem);
+      color: var(--gold-light);
+      line-height: 1;
+      display: block;
+      font-variant-numeric: lining-nums;
+    }
+    .price-stat .amount .currency {
+      font-size: 0.55em;
+      font-weight: 700;
+      vertical-align: 0.28em;
+      margin-right: 1px;
+    }
+    .price-stat .label {
+      margin-top: 10px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+    .price-divider {
+      position: relative;
+      z-index: 1;
+      width: 1px;
+      align-self: stretch;
+      background: rgba(201,168,76,0.35);
+      margin: 4px 0;
+    }
+    @media (max-width: 560px) {
+      .price-banner { flex-direction: column; gap: 24px; padding: 32px 24px; }
+      .price-divider { width: 60%; height: 1px; align-self: center; }
+    }
+
+    /* ══ WEEKLY MENU — day cards with badges & chips ═════════ */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-bottom: 56px;
+    }
+    .day-card {
+      background: #ffffff;
+      border: 1px solid rgba(26,32,80,0.09);
+      border-radius: 14px;
+      padding: 26px 24px 24px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      position: relative;
+    }
+    .day-card:hover {
+      box-shadow: 0 14px 36px rgba(26,32,80,0.14);
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.4);
+    }
+    .day-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 14px rgba(26,32,80,0.25);
+      border: 2px solid var(--gold);
+    }
+    .day-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .day-card .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 7px;
+    }
+    .chip {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--navy);
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(201,168,76,0.4);
+      white-space: nowrap;
+    }
+
+    /* Sides section — distinct chip cloud on navy strip */
+    .sides-panel {
+      background: var(--stone);
+      border-radius: 14px;
+      padding: 36px 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .sides-panel .day-card-title { margin-bottom: 18px; }
+    .sides-panel .chip-row { gap: 10px; }
+    .sides-panel .chip {
+      background: #ffffff;
+      font-size: 0.85rem;
+      padding: 8px 16px;
+    }
+    .sides-note {
+      margin-top: 18px;
+      font-size: 0.78rem;
+      color: #777;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<div id="nav-placeholder"></div>
+
+<!-- ── PAGE HERO ──────────────────────────────────────────────── -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-text">
+    <p class="eyebrow">Academics</p>
+    <h1>Lunch Menu</h1>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ───────────────────────────────────────────── -->
+<main>
+
+  <div class="dress-intro">
+    <p>Our 2026&ndash;27 lunch program offers a fresh hot lunch option each school day, with sides and bottled water included.</p>
+  </div>
+
+  <!-- ── PRICING — front and center ── -->
+  <div class="price-banner">
+    <div class="price-stat">
+      <span class="amount"><span class="currency">$</span>8</span>
+      <span class="label">Per Lunch</span>
+    </div>
+    <div class="price-divider"></div>
+    <div class="price-stat">
+      <span class="amount"><span class="currency">$</span>1</span>
+      <span class="label">Per Extra Side</span>
+    </div>
+  </div>
+
+  <p class="section-label">Weekly Menu</p>
+
+  <div class="menu-grid">
+
+    <div class="day-card">
+      <div class="day-badge">Mon</div>
+      <p class="headline">Mariners Box Lunch — Uncrustable</p>
+      <div class="chip-row">
+        <span class="chip">One Side</span>
+        <span class="chip">Bottled Water</span>
+        <span class="chip">Special Treat</span>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge">Tue</div>
+      <p class="headline">Publix Popcorn Chicken</p>
+      <div class="chip-row">
+        <span class="chip">One Side</span>
+        <span class="chip">Bottled Water</span>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge">Wed</div>
+      <p class="headline">Anna's Box Lunch Spaghetti</p>
+      <div class="chip-row">
+        <span class="chip">Bread Stick</span>
+        <span class="chip">One Side</span>
+        <span class="chip">Bottled Water</span>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge">Thu</div>
+      <p class="headline">Hardee's Grilled Cheese</p>
+      <div class="chip-row">
+        <span class="chip">Applesauce</span>
+        <span class="chip">Juice Box</span>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge">Fri</div>
+      <p class="headline">Sal's Cheese Pizza</p>
+      <div class="chip-row">
+        <span class="chip">One Side</span>
+        <span class="chip">Bottled Water</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sides-panel">
+    <h2 class="day-card-title">Available Sides</h2>
+    <div class="chip-row">
+      <span class="chip">Applesauce</span>
+      <span class="chip">Potato Chips</span>
+      <span class="chip">Goldfish</span>
+      <span class="chip">Pretzels</span>
+    </div>
+    <p class="sides-note">Sides are subject to change.</p>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<div id="footer-placeholder"></div>
+
+<script>
+  function loadPartial(id, file) {
+    fetch(file)
+      .then(r => r.text())
+      .then(html => { document.getElementById(id).innerHTML = html; })
+      .catch(() => console.warn('Could not load partial:', file));
+  }
+  loadPartial('nav-placeholder',    'navigation.html');
+  loadPartial('footer-placeholder', 'footer.html');
+
+  document.addEventListener('click', e => {
+    const btn = e.target.closest('#navLinks button');
+    if (btn) {
+      const li = btn.parentElement;
+      const isOpen = li.classList.contains('open');
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) li.classList.add('open');
+      return;
+    }
+    if (!e.target.closest('#navLinks'))
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('#navLinks > li.open').forEach(el => el.classList.remove('open'));
+      closeMobileNav();
+    }
+  });
+
+  function openMobileNav()  { document.getElementById('mobileNav').classList.add('open');    document.body.style.overflow = 'hidden'; }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = '';       }
+</script>
+
+</body>
+</html>
