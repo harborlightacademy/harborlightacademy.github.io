@@ -104,6 +104,26 @@
     </div>
   </div>
 
+  <!-- Amy Casey -->
+  <div class="bio-card" id="amy">
+    <div class="bio-photo">
+      <img src="images/amy-casey.jpg" alt="Amy Casey" />
+    </div>
+    <div class="bio-info">
+      <p class="role">Business Manager</p>
+      <h2>Amy Casey</h2>
+      <ul style="font-size:0.88rem; line-height:1.9; color:#444; margin-top:12px; padding-left:1.2em; list-style:none;">
+        <li>Associate Degree in Business Administration</li>
+      </ul>
+      <a href="mailto:acasey@harborlightacademy.com" class="bio-email">✉ acasey@harborlightacademy.com</a>
+      <button class="bio-toggle" onclick="toggleAmyBio()" id="amy-toggle">Read Bio ▾</button>
+      <div id="amy-bio" hidden>
+        <p>Amy Casey brings valuable experience and a heart for serving others to the Harbor Light Academy family. She holds an associate degree in Business Administration and has seven years of experience working at a nonprofit school. With a genuine love for working in schools and alongside children, Amy is a valued member of our team who helps keep our school running smoothly behind the scenes.</p>
+        <p>Her background includes payroll, accounting, and human resources administration (HRA) benefits, bringing a wealth of knowledge and organization to our school community. We are incredibly grateful for Amy’s dedication, her willingness to serve, and the many ways she contributes to the success of HLA. We are blessed to have her as part of our Mariner family!</p>
+      </div>
+    </div>
+  </div>
+
   <!-- Lina Edwards -->
   <div class="bio-card" id="lina">
     <div class="bio-photo">
@@ -256,7 +276,24 @@
       </div>
     </div>
   </div>
-  
+  <!-- Lynne Stadler -->
+  <div class="bio-card" id="lynne">
+    <div class="bio-photo">
+      <img src="images/lynne-stadler.jpg" alt="Lynne Stadler" />
+    </div>
+    <div class="bio-info">
+      <p class="role">Music Teacher</p>
+      <h2>Lynne Stadler</h2>
+      <a href="mailto:lstadler@harborlightacademy.com" class="bio-email">✉ lstadler@harborlightacademy.com</a>
+      <button class="bio-toggle" onclick="toggleLynneBio()" id="lynne-toggle">Read Bio ▾</button>
+      <div id="lynne-bio" hidden>
+        <p>Lynne Stadler and her husband, Tim, moved to Chesapeake in 2021. They have two adult children and a very spoiled German Shepherd who keeps them on their toes! With more than 20 years of experience working with children, Lynne brings a wealth of knowledge, creativity, and a lifelong love of music to Harbor Light Academy.</p>
+        <p>Music has been an important part of Lynne’s life since elementary school. Her musical background includes performing with the Cleveland Orchestra Children’s Chorus, singing in an a cappella choir and opera worship at Wittenberg University, and participating in opera workshop and chamber chorale at Xavier University.</p>
+        <p>Lynne is excited to share her passion for music with HLA students, helping them explore different musical styles, discover their own creativity, and develop a lifelong appreciation for the joy and beauty of music.</p>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <!-- Footer -->
@@ -312,6 +349,8 @@
   function toggleShannonBio(){ toggleBioSection('shannon-toggle','shannon-bio'); }
   function toggleLesleyBio() { toggleBioSection('lesley-toggle', 'lesley-bio'); }
   function toggleLauraBio()  { toggleBioSection('laura-toggle',  'laura-bio');  }
+  function toggleAmyBio()    { toggleBioSection('amy-toggle',    'amy-bio');    }
+  function toggleLynneBio()  { toggleBioSection('lynne-toggle',  'lynne-bio');  }
 </script>
 </body>
 </html>
